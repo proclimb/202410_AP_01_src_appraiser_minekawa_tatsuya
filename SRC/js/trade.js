@@ -36,7 +36,6 @@ function fnTradeEditCheck() {
 		return;
 	}
 
-
 	tmp = form.prefecture.value;
 	if (tmp.length > 10) {
 		alert('住所（都道府県）は10文字以内で入力してください');
@@ -84,6 +83,7 @@ function fnTradeEditCheck() {
 function fnTradeDeleteCheck(no) {
 	if (confirm('削除します。よろしいですか？')) {
 		form.tradeNo.value = no;
+		form.act.value = 'tradeDelete';
 		form.submit();
 	}
 }
