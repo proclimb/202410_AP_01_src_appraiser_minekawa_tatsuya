@@ -260,9 +260,11 @@ function subArticleEdit()
 			</tr>
 		</table>
 
-		<a href="javascript:fnArticleEditCheck();"><img src="./images/<?php print $btnImage ?>" /></a>　
+		<a href="javascript:fnArticleEditCheck();"><img src="./images/<?php print $btnImage ?>" /></a>
 		<a href="javascript:form.act.value='articleSearch';form.submit();"><img src="./images/btn_return.png" /></a>
-		&nbsp;&nbsp;<a href="javascript:fnArticleDeleteCheck(<?php print $articleNo ?>);"><img src="./images/btn_del.png" /></a>
+		<?php if ($articleNo) { ?>
+			&nbsp;&nbsp;<a href="javascript:fnArticleDeleteCheck(<?php print $articleNo ?>);"><img src="./images/btn_del.png" /></a>
+		<?php } ?>
 	</form>
 <?php
 }
@@ -334,6 +336,8 @@ function subArticleDelete()
 
 	$sql = fnSqlArticleDelete($articleNo);
 	$res = mysqli_query($conn, $sql);
+	// var_dump($sql);
+	// exit;
 
 	$_REQUEST['act'] = 'articleSearch';
 	subArticle();
